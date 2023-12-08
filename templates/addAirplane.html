@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Add Airplane</title>
+</head>
+
+<body>
+<h1>Add Airplane</h1>
+
+<form action="/newAirplane" method="POST">
+    <h3>Airplane id number</h3>
+    <input type="text" name = "id_num" placeholder="id_num" required/></br>
+    <h3>Number of Seats</h3>
+    <input type="number" name = "num_of_seats" placeholder="num_of_seats" required/></br>
+    <h3>Manufacture Company</h3>
+    <input type="text" name = "manu_company" placeholder="manu_company" required/></br>
+    <h3>Model Number</h3>
+    <input type="number" name = "model_num" placeholder="model_num" required/></br>
+    <h3>Manufacture Date</h3>
+    <input type="date" name = "manu_date" placeholder="manu_date" required/></br>
+    
+    </br>
+    <input type="submit" value = Add />
+    
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+    
+</form>
+<a href="/staffMainPage">Go Back</a></br>
+
+</body>
+</html>

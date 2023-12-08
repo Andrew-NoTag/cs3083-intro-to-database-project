@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Create Flight</title>
+</head>
+
+<body>
+<h1>Create Flight</h1>
+<h2>Flights</h2>
+
+<table border="1">
+     <tr>
+        <th>dept_date</th>
+        <th>dept_time</th>
+        <th>flight_num</th>
+        <th>dept_airport</th>
+        <th>arri_date</th>
+        <th>arri_time</th>
+        <th>base_price</th>
+        <th>flight_status</th>
+        <th>arri_airport</th>
+    </tr>
+
+{% for line in posts %}
+    <tr>
+        <td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+        <td>{{line['flight_num']}}</td>
+        <td>{{line['dept_airport']}}</td>
+        <td>{{line['arri_date']}}</td>
+        <td>{{line['arri_time']}}</td>
+        <td>{{line['base_price']}}</td>
+        <td>{{line['flight_status']}}</td>
+        <td>{{line['arri_airport']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+
+<form action="/newFlight" method="POST">
+    <h3>Airplane id number</h3>
+    <input type="text" name = "id_num" placeholder="id_num" required/></br>
+    <h3>Departure Date</h3>
+    <input type="date" name = "dept_date" placeholder="dept_date" required/></br>
+    <h3>Departure Time</h3>
+    <input type="time" name = "dept_time" placeholder="dept_time" required/></br>
+    <h3>Flight Number</h3>
+    <input type="number" name = "flight_num" placeholder="flight_num" required/></br>
+    <h3>Departure Airport</h3>
+    <input type="text" name = "dept_airport" placeholder="dept_airport" required/></br>
+    <h3>Arriving Date</h3>
+    <input type="date" name = "arri_date" placeholder="arri_date" required/></br>
+    <h3>Arriving Time</h3>
+    <input type="time" name = "arri_time" placeholder="arri_time" required/></br>
+    <h3>Base Price</h3>
+    <input type="number" name = "base_price" placeholder="base_price" required/></br>
+    <h3>Flight Status</h3>
+    <input type="text" name = "flight_status" placeholder="flight_status" required/></br>
+    <h3>Arriving Airport</h3>
+    <input type="text" name = "arri_airport" placeholder="arri_airport" required/></br>
+    
+    </br>
+    <input type="submit" value = Add />
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+<a href="/staffMainPage">Go Back</a></br>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Schedule Maintenance</title>
+</head>
+
+<body>
+<h1>Schedule Maintenance</h1>
+
+<form action="/newMaintenance" method="POST">
+    <h3>Airplane id number</h3>
+    <input type="text" name = "id_num" placeholder="id_num" required/></br>
+    <h3>Start Date</h3>
+    <input type="date" name = "start_date" placeholder="start_date" required/></br>
+    <h3>Start Time</h3>
+    <input type="time" name = "start_time" placeholder="start_time" required/></br>
+    <h3>End Date</h3>
+    <input type="date" name = "end_date" placeholder="end_date" required/></br>
+    <h3>End Time</h3>
+    <input type="time" name = "end_time" placeholder="end_time" required/></br>
+    
+    </br>
+    <input type="submit" value = Add />
+    
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+    
+</form>
+<a href="/staffMainPage">Go Back</a></br>
+
+</body>
+</html>

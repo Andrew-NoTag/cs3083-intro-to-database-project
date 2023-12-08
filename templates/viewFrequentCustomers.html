@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>View Frequent Customers</title>
+</head>
+
+<body>
+<h1>View Frequent Customers</h1>
+
+<h2>The Most Frequent Customer</h2>
+
+<table border="1">
+     <tr>
+        <th>email_address</th>
+        <th>flight_count</th>
+    </tr>
+
+{% for line in posts %}
+    <tr>
+        <td>{{line['email']}}</td>
+        <td>{{line['flight_count']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+
+<h2>Search a Customer's Flights</h2>
+
+<form action="/searchCustomerFlight" method="POST">
+    <h3>Customer Email</h3>
+    <input type="text" name = "email" placeholder="email" required/> </br>
+    </br>
+    <input type="submit" value = Search />
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+
+<table border="1">
+     <tr>
+        <th>Flight_Number</th>
+        <th>Departure_Date</th>
+        <th>Departure_Time</th>
+    </tr>
+
+{% for line in posts2 %}
+    <tr>
+        <td>{{line['flight_num']}}</td>
+        <td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+<a href="/staffMainPage">Go Back</a></br>
+
+</body>
+</html>
