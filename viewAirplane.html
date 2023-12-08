@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>View AirPlane</title>
+</head>
+
+<body>
+<h1>View AirPlane</h1>
+<h2>AirPlanes</h2>
+
+<table border="1">
+     <tr>
+        <th>name</th>
+        <th>id_num</th>
+        <th>num_of_seats</th>
+        <th>manu_company</th>
+        <th>model_num</th>
+        <th>manu_date</th>
+        <th>age</th>
+    </tr>
+
+{% for line in posts %}
+    <tr>
+        <td>{{line['name']}}</td>
+        <td>{{line['id_num']}}</td>
+        <td>{{line['num_of_seats']}}</td>
+        <td>{{line['manu_company']}}</td>
+        <td>{{line['model_num']}}</td>
+        <td>{{line['manu_date']}}</td>
+        <td>{{line['age']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+<a href="/staffMainPage">Go Back</a></br>
+
+</body>
+</html>

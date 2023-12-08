@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>View Flight</title>
+</head>
+
+<body>
+<h1>View Flight</h1>
+<h2>Flights</h2>
+
+<table border="1">
+     <tr>
+        <th>dept_date</th>
+        <th>dept_time</th>
+        <th>flight_num</th>
+        <th>dept_airport</th>
+        <th>arri_date</th>
+        <th>arri_time</th>
+        <th>base_price</th>
+        <th>flight_status</th>
+        <th>arri_airport</th>
+    </tr>
+
+{% for line in posts %}
+    <tr>
+        <td>{{line['dept_date']}}</td>
+        <td>{{line['dept_time']}}</td>
+        <td>{{line['flight_num']}}</td>
+        <td>{{line['dept_airport']}}</td>
+        <td>{{line['arri_date']}}</td>
+        <td>{{line['arri_time']}}</td>
+        <td>{{line['base_price']}}</td>
+        <td>{{line['flight_status']}}</td>
+        <td>{{line['arri_airport']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+
+<a href="/createFlight">Create Flight</a> </br>
+
+<a href="/changeFlightStatus">Change Flight Status</a> </br>
+
+<form action="/search_flight_staff" method="POST">
+    <h3>Begin Date</h3>
+    <input type="date" name = "beginDate" placeholder="beginDate" required/> </br>
+    <h3>End Date</h3>
+    <input type="date" name = "endDate" placeholder="endDate" required/></br>
+    <h3>Source Aiport code</h3>
+    <input type="text" name = "sourceAirport" placeholder="sourceAirport" required/></br>
+    <h3>destination Aiport code</h3>
+    <input type="text" name = "destinationAirport" placeholder="destinationAirport" required/></br>
+    </br>
+    <input type="submit" value = Search />
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+
+<h2>Find Customer of a Flight</h2>
+<table border="1">
+     <tr>
+        <th>flight_num</th>
+        <th>email</th>
+        <th>first_name</th>
+        <th>last_name</th>
+    </tr>
+
+{% for line in posts2 %}
+    <tr>
+        <td>{{line['flight_num']}}</td>
+        <td>{{line['email']}}</td>
+        <td>{{line['first_name']}}</td>
+        <td>{{line['last_name']}}</td>
+    </tr>
+{% endfor %}
+</table></br>
+
+<form action="/searchCustomer" method="POST">
+    <h3>Flight Number</h3>
+    <input type="text" name = "Flight_Number" placeholder="Flight_Number" required/> </br>
+    <h3>Departure Date</h3>
+    <input type="date" name = "Departure_Date" placeholder="Departure_Date" required/></br>
+    <h3>Departure Time</h3>
+    <input type="time" name = "Departure_Time" placeholder="Departure_Time" required/></br></br>
+    <input type="submit" value = Search />
+    {% if error %}
+        <p class="error"><strong>Error:</strong> {{error}}</p>
+    {% endif %}
+</form>
+
+<a href="/staffMainPage">Go Back</a></br>
+</body>
+</html>

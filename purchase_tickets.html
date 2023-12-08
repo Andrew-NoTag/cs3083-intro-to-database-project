@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Tickets</title>
+</head>
+<body>
+    <h1 style="color: blue;"> Purchase Tickets</h1>
+    <form method="post" action="{{ url_for('purchase_ticket') }}">
+        <label for="flight_id">Flight ID:</label>
+        <input type="text" name="flight_id" required>
+        <br>
+        <label for="passenger_name">Passenger Name:</label>
+        <input type="text" name="passenger_name" required>
+        <br>
+        <label for="date_of_birth">Passenger Date of Birth:</label>
+        <input type="date" name = "date_of_birth" placeholder="insert date" required/>
+        <br>
+        <label for="payment_type">Payment Type:</label>
+        <input type="text" name="payment_type" required>
+        <br>
+        <label for="payment_num">Payment Number:</label>
+        <input type="text" name="payment_num" required>
+        <br>
+        <label for="name_on_card">Name on Card:</label>
+        <input type="text" name="name_on_card" required>
+        <br>
+        <label for="expiration_date">Expiration Date:</label>
+        <input type="date" name = "expiration_date" placeholder="insert exp" required/>
+        <br>
+        <button type="submit">Purchase</button>
+    </form>
+    <br>
+    <a href="/cusMainPage">Home</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>

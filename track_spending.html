@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Spending</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <h1>Track My Spending</h1>
+
+    <form method="POST" action="{{ url_for('track_spending') }}">
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" required>
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" required>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if spending_data %}
+        <h2>Spending Data</h2>
+        <canvas id="myChart" width="400" height="400"></canvas>
+
+        <script>
+            // Get the spending data from Flask and convert it to JavaScript
+            var spendingData = {{ spending_data | tojson | safe }};
+
+            // Prepare data for Chart.js
+            var labels = spendingData.map(entry => entry.month);
+            var amounts = spendingData.map(entry => entry.total_spent);
+
+            // Create a bar chart
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Spending',
+                        data: amounts,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+    {% else %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <br>
+    <a href="/cusMainPage">Home</a> |
+    <a href="/logout">Logout</a>
+</body>
+
+</html>
+

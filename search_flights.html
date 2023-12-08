@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Flights</title>
+</head>
+<body>
+    <h2>Search Flights</h2>
+
+    <form action="/search_flights" method="post">
+        <label for="departure_airport">Departure Airport:</label>
+        <input type="text" id="departure_airport" name="departure_airport" required>
+        <br>
+
+        <label for="arrival_airport">Arrival Airport:</label>
+        <input type="text" id="arrival_airport" name="arrival_airport" required>
+        <br>
+
+        <label for="departure_date">Departure Date:</label>
+        <input type="date" id="departure_date" name="departure_date" placeholder="insert date" required/>
+        <br>
+
+        <input type="submit" value="Search Flights">
+    </form>
+
+    {% if flights %}
+        <h3>Search Results</h3>
+        <table border="1">
+            <tr>
+                <th>Flight ID</th>
+                <th>Departure Airport</th>
+                <th>Arrival Airport</th>
+                <th>Departure Date</th>
+                <th>Departure Time</th>
+                <th>Actual Price</th>
+            </tr>
+            {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.flight_num }}</td>
+                    <td>{{ flight.dept_airport }}</td>
+                    <td>{{ flight.arri_airport }}</td>
+                    <td>{{ flight.dept_date }}</td>
+                    <td>{{ flight.dept_time }}</td>
+                    <td>{{ flight.actual_price }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    {% endif %}
+    <br>
+    <a href="/cusMainPage">Home</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>

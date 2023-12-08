@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating and Comment</title>
+</head>
+
+<body>
+    <h1>Rating and Comment</h1>
+
+    <form method="post" action="/rate_comment">
+        <label for="flight">Select Flight:</label>
+        <select name="flight" id="flight">
+            {% for flight in flights %}
+                <option value="{{ flight.id_num }}">{{ flight.id_num, flight.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="cus_comment_rating">Rating (1-5):</label>
+        <input type="number" name="cus_comment_rating" id="cus_comment_rating" required min="1" max="5">
+
+        <label for="cus_comment">Comment:</label>
+        <textarea name="cus_comment" id="cus_comment" required></textarea>
+
+        <input type="submit" value="Submit Rating and Comment">
+    </form>
+    <hr>
+    <h2>Past Comments</h2>
+    {% if past_comments %}
+        <ul>
+            {% for comment in past_comments %}
+                <li>{{ comment.comments }} - Rating: {{ comment.rate }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No past comments available.</p>
+    {% endif %}
+
+    <br>
+    <a href="/cusMainPage">Home</a> |
+    <a href="/logout">Logout</a>
+</body>
+</html>

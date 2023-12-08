@@ -1,0 +1,51 @@
+<html>
+<head>
+</head>
+<body>
+<h1>Customer Register</h1>
+<form action="/registerAuthCustomer" method="POST">
+	<input type="text" name = "email" placeholder="email" required/> </br>
+	<input type="password" name = "password" placeholder="password" required/></br>
+	<input type="text" name = "first name" placeholder="first name" required/> </br>
+	<input type="text" name = "last name" placeholder="last name" required/></br>
+	<div id="phoneContainer">
+            <div>
+                <input type="number" name="phone">
+                <button type="button" onclick="addPhone()">Add phone</button>
+            </div>
+    </div>
+	<h4>Address:</h4>
+	<input type="text" name = "state" placeholder="state" required/></br>
+	<input type="text" name = "city" placeholder="city" required/></br>
+	<input type="number" name = "zipcode" placeholder="zipcode" required/></br>
+	<input type="text" name = "street" placeholder="street" required/></br>
+	<input type="number" name = "building number" placeholder="building number" required/></br>
+	<input type="number" name = "apartment number" placeholder="apartment number" required/></br>
+	<h4>Personal Information:</h4>
+	<input type="text" name = "passport number" placeholder="passport number" required/></br>
+	<label for="passport expiration date">passport expiration date:</label>
+	<input type="date" name = "passport expiration date" placeholder="passport expiration date" required/></br>
+	<input type="text" name = "passport country" placeholder="passport country" required/></br>
+	<label for="date of birth">date of birth:</label>
+	<input type="date" name = "date of birth" placeholder="date of birth" required/></br>
+
+
+
+	<input type="submit" value = Register />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<script>
+    function addPhone() {
+            var container = document.getElementById('phoneContainer');
+            var newDiv = document.createElement('div');
+            newDiv.innerHTML =
+                '<input type="number" name="phone">'
+            container.appendChild(newDiv);
+    }
+</script>
+<a href="/">Go back</a>
+</body>
+</html>
